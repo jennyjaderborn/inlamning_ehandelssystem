@@ -15,7 +15,8 @@ const CartComponent = {
           v-bind:key="item._id">
         </cart-item>
       </table>
-    </div>
+      
+      </div>
   `,
   created(){
     // ladda in litta data

@@ -5,7 +5,8 @@ const ProductComponent = {
   template: `
     <div class="card-body">
       <h2>{{item.name}}</h2>
-      <div>{{item.price}}kr</div>
+      <div>{{item.price}}kr
+      </div>      
       <p v-html="item.description"></p>
       <button v-on:click="addToCart">Lägg till</button>
     </div>

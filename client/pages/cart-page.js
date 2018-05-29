@@ -5,23 +5,34 @@ const CartPageComponent = {
             <cart class="col-12"></cart>
            
             <div class="col-12">
-            <input type="radio">Expressfrakt(1-2 leverandsdagar)</input><br>
-            <input type="radio">Postnord(3-5 leverandsdagar)</input><br>
-            <input type="radio">Gratis frakt vid köp över 800 kr!</input><br>
-            
-                <label>Förnamn:</label>
-                <input name="first-name" v-model="firstName"></input>
-                
+            <input type="radio" value="One">Expressfrakt(1-2 leverandsdagar)</input><br>
+            <input type="radio" value="Two"">Postnord(3-5 leverandsdagar)</input><br>
+            <input type="radio" value="Three">Gratis frakt vid köp över 800 kr!</input><br>
+                <input placeholder="Förnamn" name="first-name" v-model="firstName"></input>
+                <input placeholder="Efternamn" name="last-name" v-model="lastName"></input>                
+                <input placeholder="Adress" name="address" v-model="address"></input>                
+                <input placeholder="Stad" name="city" v-model="city"></input>                
                 <button v-on:click="pay">Betala</button>
+
+                <input type="radio" id="one" value="One" v-model="picked">
+                <label for="one">One</label>
+                <br>
+                <input type="radio" id="two" value="Two" v-model="picked">
+                <label for="two">Two</label>
+                <br>
+                <span>Picked: {{ picked }}</span>
             </div>
           </div>
         `
         ,
 
         data(){
-            return{
-                firstName: '' //värdet i vårt inputfält, vmodel är båda hållen, vbind är åt ena hållet.
-
+             return{
+                firstName: '', //värdet i vårt inputfält, vmodel är båda hållen, vbind är åt ena hållet.
+                lastName: '',
+                address: '',
+                city: '',
+                picked: ''
             }
           },
           methods: {
@@ -29,6 +40,7 @@ const CartPageComponent = {
                   //console.log('pay');
                   http.post('/rest/pay', {}).then(response => {
                     console.log(response);
+                    
                   }).catch(error => {
                     console.error(error);
                   });
