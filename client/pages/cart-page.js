@@ -13,14 +13,9 @@ const CartPageComponent = {
                 <input placeholder="Adress" name="address" v-model="address"></input>                
                 <input placeholder="Stad" name="city" v-model="city"></input>                
                 <button v-on:click="pay">Betala</button>
-
-                <input type="radio" id="one" value="One" v-model="picked">
-                <label for="one">One</label>
-                <br>
-                <input type="radio" id="two" value="Two" v-model="picked">
-                <label for="two">Two</label>
-                <br>
-                <span>Picked: {{ picked }}</span>
+                <span v-if="message">{{message}}</span>
+                
+                
             </div>
           </div>
         `
@@ -32,17 +27,29 @@ const CartPageComponent = {
                 lastName: '',
                 address: '',
                 city: '',
-                picked: ''
+                message: ''
             }
           },
           methods: {
               pay: ()=>{
                   //console.log('pay');
-                  http.post('/rest/pay', {}).then(response => {
+                  http.post('/rest/pay', {
+                      message: this.message
+                  }).then(response => {
                     console.log(response);
+                    if(response.data){
+                        console.log("din order lagd");
+                        this.message = 'Din order lagd';
+                    } else {
+                        this.message = 'Order ej lagd.';
+                      }
+                   
+                    //testathis.message = 'nsdksdksdhksdh';
+                    //funkar ejres.json(response);
                     
                   }).catch(error => {
                     console.error(error);
+                    this.message = 'Save failed';
                   });
               }
           }

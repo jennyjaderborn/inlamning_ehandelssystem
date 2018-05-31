@@ -44,6 +44,9 @@ const accessManager = new AccessManager({
 const Product = require('./models/product.js');
 // the cart model needs to be a global, it is used in the cart middleware
 global.Cart = require('./models/cart.js');
+
+//const Order = reguire('./model/order.js');
+
 const User = accessManager.models.user;
 
 // MIDDLEWARES
@@ -58,6 +61,7 @@ app.use(CartMiddleware);
 app.post('/rest/pay', async(req, res)=>{
   const userEmail = req.session.user.email;
   
+
   let paymentSum = 0;
   const cart = await Cart.findOne({_id: req.session.cart}).populate('items.product');// vi vill hitta id på carten
 //populate byter ut id mot objekt. 
@@ -88,6 +92,17 @@ for(let item of cart.items){
   }).catch(e=>console.error);//får ut error, bra att ha efter await
 
   res.json(charge);
+
+  console.log(req.session.user.id + "dnsdjs");
+
+  /*let order = await new Order(req.body);
+  try{
+    order.save();
+    res.json(order);
+  }catch(err){
+    console.error(err);
+    res.json(err);
+  }*/
 
 });
 

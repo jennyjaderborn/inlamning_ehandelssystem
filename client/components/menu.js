@@ -20,6 +20,9 @@ const MenuComponent = {
                 <li class="nav-item">
                     <router-link class="nav-link" to="/logreg">Logga in</router-link>
                 </li>
+                <li class="nav-item">
+                <router-link class="nav-link" to="/admin">Admin</router-link>
+            </li>
             </div>
         </div>
     

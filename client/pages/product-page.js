@@ -7,10 +7,11 @@ const ProductPageComponent = {
         <search 
         v-if="!slice"
         ></search>
+        
           <div class="col-12 card-body">
           <h1 v-if="!slice">Product page</h1>
-        <product 
-            v-for="product in products"
+        <product
+          v-for="product in products"        
             v-bind:item="product"
             v-bind:key="product._id"
             ></product>  
@@ -23,6 +24,7 @@ const ProductPageComponent = {
         http.get('/rest/products').then((response) => {
 
           if(this.slice){
+            console.log(this.slice);
             this.products = response.data.splice(- Number(this.slice));
             } else {
               this.products = response.data;
@@ -37,7 +39,8 @@ const ProductPageComponent = {
       },
       data(){
         return{
-          products: []
+          products: [],
+          searchItem: ''          
         }
       }
     }

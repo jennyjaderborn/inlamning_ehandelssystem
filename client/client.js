@@ -11,6 +11,7 @@ Vue.component('cart-page', CartPageComponent);
 Vue.component('logreg-page', LogRegPageComponent);
 Vue.component('admin-page', AdminPageComponent);
 Vue.component('search', SearchComponent);
+Vue.component('product-admin', ProductAdminComponent);
 
 const http = axios; // using axios 3rd party XHR/REST lib
 
