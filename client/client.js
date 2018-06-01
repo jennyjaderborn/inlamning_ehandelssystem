@@ -5,8 +5,6 @@ Vue.component('login', LoginComponent);
 Vue.component('cart-item', CartItemComponent);
 Vue.component('order-item', OrderItemComponent);
 Vue.component('category', CategoryComponent);
-
-
 Vue.component('cart', CartComponent);
 Vue.component('home-page', HomePageComponent);
 Vue.component('product-page', ProductPageComponent);
@@ -17,6 +15,7 @@ Vue.component('admin-page', AdminPageComponent);
 Vue.component('search', SearchComponent);
 Vue.component('product-admin', ProductAdminComponent);
 Vue.component('order-admin', OrderAdminComponent);
+Vue.component('category-admin', CategoryAdminComponent);
 
 const http = axios; // using axios 3rd party XHR/REST lib
 
