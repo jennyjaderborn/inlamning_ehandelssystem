@@ -11,5 +11,4 @@
   {"path":"/rest/order", "roles":[ {"role": "admin", "methods": ["GET"]} ]},
   {"path":"/rest/categories*", "roles":[ {"role": "*", "methods": ["GET"]}, {"role": "admin", "methods":["PUT","POST","DELETE"]} ]}
   
-  
 ]

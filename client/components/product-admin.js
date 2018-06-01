@@ -16,8 +16,11 @@ const ProductAdminComponent = {
       <input type="number" v-model="vat" :disabled="loading" />
     </label>
     <label>Artikelnummer
-    <input type="text" v-model="artnr" placeholder="t ex: abc123" :disabled="loading" />
-  </label>
+        <input type="text" v-model="artnr" placeholder="t ex: abc123" :disabled="loading" />
+    </label>
+    <label>Kategori
+      <input type="text" v-model="categories" placeholder="kategoriid" :disabled="loading" />
+    </label>
         <button type="submit" :disabled="loading">Skapa produkt</button>
         <br/>
         <span v-if="message">{{message}}</span>
@@ -31,6 +34,7 @@ const ProductAdminComponent = {
       price: 0,
       vat: 0.25,
       artnr: '',
+      categories: '',
       message: '',
       loading: false
     };
@@ -43,7 +47,8 @@ const ProductAdminComponent = {
         description: this.description,
         price: this.price,
         vat: this.vat,
-        artnr: this.artnr
+        artnr: this.artnr,
+        categories: this.categories
       }).then(response => {
         console.log(response);
         this.loading = false;
