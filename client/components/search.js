@@ -8,9 +8,10 @@ const SearchComponent = {
           </label>
           Du sökte efter : {{searchItem}}
           
-          <div v-if="searchItem" v-for="product in filteredProducts"
-          v-bind:item="product"
-          v-bind:key="product._id">
+          <div v-if="searchItem" 
+            v-for="product in filteredProducts"
+            v-bind:item="product"
+            v-bind:key="product._id">
                 <h2>{{product.name}}</h2>
                 <p>{{product.price}}</p>
           </div> 

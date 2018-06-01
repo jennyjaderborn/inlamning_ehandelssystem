@@ -41,13 +41,14 @@ const accessManager = new AccessManager({
 
 
 // MODELS
+const Category = require('./models/category.js');
 const Product = require('./models/product.js');
 // the cart model needs to be a global, it is used in the cart middleware
 global.Cart = require('./models/cart.js');
-
-//const Order = reguire('./model/order.js');
-
 const User = accessManager.models.user;
+
+const Order = require('./models/order.js');
+
 
 // MIDDLEWARES
 const CartMiddleware = require('./middlewares/cart-middleware.js');
@@ -91,25 +92,27 @@ for(let item of cart.items){
     customer: source.customer
   }).catch(e=>console.error);//får ut error, bra att ha efter await
 
+  let order = await new Order({
+    customer: req.user,
+    result: charge,
+    cartData: cart
+  });
+  await order.save();
+
   res.json(charge);
-
-  console.log(req.session.user.id + "dnsdjs");
-
-  /*let order = await new Order(req.body);
-  try{
-    order.save();
-    res.json(order);
-  }catch(err){
-    console.error(err);
-    res.json(err);
-  }*/
 
 });
 
 
+app.get('/rest/order', async(req, res)=>{
+  let orders = await Order.find(); // {name:"The Times"}
+  res.json(orders);
+}); 
+
+
 app.get('/rest/products', async(req, res)=>{
   //res.send('We are products');
-  let products = await Product.find(); // {name:"The Times"}
+  let products = await Product.find().populate('categories'); // {name:"The Times"}
   res.json(products);
 });
 
@@ -149,6 +152,26 @@ app.delete('/rest/products/:id', async (req, res)=>{
   // delete the product from the db
   let result = await Product.deleteOne({_id: req.params.id});
   res.json(result);
+});
+
+//Category crud(create,update,delete) paths
+
+app.post('/rest/categories', async(req, res)=>{
+  //res.send('We would create a product');
+  let category = await new Category(req.body);
+  try{
+    category.save();
+    res.json(category);
+  }catch(err){
+    console.error(err);
+    res.json(err);
+  }
+});
+
+app.get('/rest/categories', async(req, res)=>{
+  //res.send('We are products');
+  let categories = await Category.find(); // {name:"The Times"}
+  res.json(categories);
 });
 
 // Cart CRUD paths (REMEMBER TO ADD /rest/cart TO ACL)

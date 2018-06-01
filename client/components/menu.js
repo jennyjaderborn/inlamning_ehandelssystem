@@ -23,8 +23,52 @@ const MenuComponent = {
                 <li class="nav-item">
                 <router-link class="nav-link" to="/admin">Admin</router-link>
             </li>
+
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Kategorier
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <router-link class="dropdown-item" to="/products">All</router-link>  
+            <category class="dropdown-item"
+              v-for="category in categories"
+              v-bind:cat="category"
+              v-bind:key="category._id"
+              ></category>
+
+
+              
+            </div>
+          </li>
+
+
             </div>
         </div>
     
-      `
+      `,
+
+      /*created(){
+          
+        http.get('/rest/categories').then((response) =>{
+            this.categories = response.data;
+            console.log("Produkterna finns" + this.categories);
+            
+          }).catch((error) => {
+          console.error(error);
+        });
+      },*/
+
+      data(){
+        return{
+          categories: []         
+        };
+    },
+
+    async created(){
+        let categories = await http.get('/rest/categories');
+        if(categories.data){
+            this.categories = categories.data;
+        }
+    }
+
     }

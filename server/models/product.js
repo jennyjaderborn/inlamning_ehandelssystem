@@ -3,5 +3,6 @@ module.exports = mongoose.model('Product', new mongoose.Schema({
   description: String,
   price: Number,
   vat: Number,
-  artnr: {type: String, unique: true}
+  artnr: {type: String, unique: true},
+  categories: [{type: mongoose.Schema.Types.ObjectId, ref: 'Category' }]
 }));
