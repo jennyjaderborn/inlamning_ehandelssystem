@@ -1,11 +1,11 @@
 const AdminPageComponent = {
   
         template: `
-          <div class="row">
+          <div class="adminContainer">
             <h2>Admin</h2>
-            <product-admin class="col-12"></product-admin>
-            <order-admin class="col-12"></order-admin>
-            <category-admin class="col-12"></category-admin>
+            <product-admin></product-admin>
+            <order-admin></order-admin>
+            <category-admin></category-admin>
             
           </div>
         `

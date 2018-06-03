@@ -3,21 +3,20 @@ const ProductPageComponent = {
   props:["slice"],
   
       template: `
-        <div class="row">
-        <search 
-        v-if="!slice"
-        ></search>
-
-    
+        <div class="container">
         
-          <div class="col-12 card-body">
-          <h1 v-if="!slice">Product page</h1>
+       
+          <input v-if="!slice" placeholder="sök produkt" v-model="searchItem" type="text" />      
+
+      <div class="productContainer">  
         <product
           v-for="product in categoryFilteredProducts"        
             v-bind:item="product"
             v-bind:key="product._id"
             ></product>  
-          </div>
+        </div>
+
+
         </div>
       `
       ,
@@ -49,13 +48,18 @@ const ProductPageComponent = {
       data(){
         return{
           products: [],
-          searchItem: '',
+          searchItem: [],
           categories: []         
         }
       },
       computed: {
+        filteredProducts: function(){
+          return this.products.filter((product)=> {
+            return product.name.match(this.searchItem);
+          });
+        },
         categoryFilteredProducts: function(){
-        return this.products.filter((product)=>{
+        return this.filteredProducts.filter((product)=>{
           if(!this.$route.params.category){
             return true; // if no category selected, do not filter
           }

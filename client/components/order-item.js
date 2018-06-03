@@ -5,7 +5,9 @@ const OrderItemComponent = {
       template: `
     
           <li>
-         <p>{{order.cartData}}</p>
+         <p>Id: {{order.customer}}</p>
+         <p>Orderid: {{order._id}}</p>
+         <p>Ordersumma: {{order.result.amount}}</p>
           </li>
          
        

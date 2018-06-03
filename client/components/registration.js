@@ -2,13 +2,12 @@ const RegistrationComponent = {
   template: `
     <div class="card-body">
       <h2>Registrera dig</h2>
-      <form @submit.prevent="submit">
-        <label>Email
-          <input type="text" v-model="email" :disabled="loading" />
-        </label>
-        <label>Password
-          <input type="password" v-model="password" :disabled="loading" />
-        </label>
+      <form class="reg" @submit.prevent="submit">
+        
+          <input placeholder="Email" type="text" v-model="email" :disabled="loading" />
+       
+       
+          <input placeholder="Lösenord" type="password" v-model="password" :disabled="loading" />
         <button type="submit" :disabled="loading">Register</button>
         <br/>
         <span v-if="message">{{message}}</span>

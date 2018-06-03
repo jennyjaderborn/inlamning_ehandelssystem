@@ -3,12 +3,12 @@ const ProductComponent = {
   props: ['item'],
 
   template: `
-    <div class="card-body">
-      <h2>{{item.name}}</h2>
-      <div>{{item.price}}kr
-      </div>      
+
+  <div class="productCard">
+      <p class="itemName">{{item.name}}</p>
+      <p class="itemPrice">{{item.price}}kr</p>      
       <p v-html="item.description"></p>
-      <button v-on:click="addToCart">Lägg till</button>
+      <button class="productButton" v-on:click="addToCart">Lägg till</button>
     </div>
   `,
 

@@ -1,18 +1,17 @@
 const LoginComponent = {
   template: `
     <div class="card-body">
-      <h2>Login</h2>
+      <h2>Logga in</h2>
       <div v-if="user.email">
         <h1>Welcome {{user.email}}!</h1>
         <button v-on:click="logout" :disabled="loading">Logout</button>
       </div>
-      <form v-else @submit.prevent="submit">
-        <label>Email
-          <input type="text" v-model="email" :disabled="loading" />
-        </label>
-        <label>Password
-          <input type="password" v-model="password" :disabled="loading" />
-        </label>
+      <form class="login" v-else @submit.prevent="submit">
+       
+          <input placeholder="Email"type="text" v-model="email" :disabled="loading" />
+     
+          <input placeholder="Lösenord" type="password" v-model="password" :disabled="loading" />
+       
         <button type="submit" :disabled="loading">Login</button>
         <br/>
         <span v-if="message">{{message}}</span>

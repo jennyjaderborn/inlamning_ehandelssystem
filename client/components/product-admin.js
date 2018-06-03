@@ -1,26 +1,16 @@
 const ProductAdminComponent = {
   template: `
-    <div class="card-body">
+    <div class="createProductContainer">
       <h2>Skapa en produkt</h2>
-      <form @submit.prevent="submit">
-        <label>Name
-          <input type="text" v-model="name" :disabled="loading" required/>
-        </label>
-        <label>Description
-          <input type="text" v-model="description" :disabled="loading" />
-        </label>
-        <label>Price
-        <input type="number" v-model="price" :disabled="loading" />
-      </label>
-      <label>Vat
-      <input type="number" v-model="vat" :disabled="loading" />
-    </label>
-    <label>Artikelnummer
-        <input type="text" v-model="artnr" placeholder="t ex: abc123" :disabled="loading" />
-    </label>
-    <label>Kategori
-      <input type="text" v-model="categories" placeholder="kategoriid" :disabled="loading" />
-    </label>
+      <form class="createProduct" @submit.prevent="submit">
+
+          <input placeholder="Namn" type="text" v-model="name" :disabled="loading" required/>        
+          <input placeholder="Beskrivning" type="text" v-model="description" :disabled="loading" />
+          Pris<input type="number" v-model="price" :disabled="loading" />
+          Moms <input type="number" v-model="vat" :disabled="loading" />
+          <input type="text" v-model="artnr" placeholder="Artikelnummer,t ex: abc123" :disabled="loading" />
+          <input type="text" v-model="categories" placeholder="kategoriid" :disabled="loading" />
+        
         <button type="submit" :disabled="loading">Skapa produkt</button>
         <br/>
         <span v-if="message">{{message}}</span>
@@ -32,7 +22,7 @@ const ProductAdminComponent = {
       name: '',
       description: '',
       price: 0,
-      vat: 0.25,
+      vat: 12,
       artnr: '',
       categories: '',
       message: '',
@@ -49,7 +39,7 @@ const ProductAdminComponent = {
         vat: this.vat,
         artnr: this.artnr,
         categories: this.categories
-      }).then(response => {
+        }).then(response => {
         console.log(response);
         this.loading = false;
         if(response.data.name) { //om jag fått nåt i name, vet jag att produkten har sparats kan bytas ut mot tex id, pris osv

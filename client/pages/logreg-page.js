@@ -1,7 +1,7 @@
 const LogRegPageComponent = {
     
         template: `
-        <div class="row">
+        <div class="container">
         <login></login>
         <registration></registration>
       </div>

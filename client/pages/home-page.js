@@ -1,10 +1,10 @@
 const HomePageComponent = {
 
   template: `
-    <div>
+    <div class="container">
       <hello class="col-12"></hello>
       <img class="hello-image" src="../images/hello.jpg"/>
-      <p class="descrip">Just for you</p>
+      <p class="descrip">Nyheter</p>
       <div class="row">
       <product-page v-bind:slice="3"></product-page>      
       </div>

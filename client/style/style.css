@@ -47,7 +47,7 @@ body{
 
 .h1 {
   text-align: center;
-  color: #F3A2B1;
+  color: #94A5DD;
   letter-spacing: 3px;
   text-transform: uppercase;
   font-size: 28px;
@@ -70,4 +70,105 @@ body{
   text-align: center;
   text-transform: uppercase;
   font-family: 'Montserrat', sans-serif
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+  margin-top: 20px;
+}
+
+.productContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.productCard {
+  margin: 10px;
+  width: 300px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.itemName {
+  font-size: 36px;
+}
+
+button {
+  background-color: #242457;
+  color: white;
+  width: 200px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  border-radius: 2px;
+  text-transform: uppercase;
+  
+}
+
+input {
+  margin: 10px;
+  height: 30px;
+  width: 200px;
+  border: 1px solid grey;
+}
+
+.createProduct {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.createProductContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.adminContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.cartForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login, .reg {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+h2 {
+  text-align: center;
+}
+
+
+@media all and (max-width: 800px) {
+
+  .productCard{
+    width: 80%;
+  }
+  .itemName {
+    font-size: 30px;
+  }
+
+  .nav {
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+  }
 }

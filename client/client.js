@@ -12,7 +12,6 @@ Vue.component('nav-menu', MenuComponent);
 Vue.component('cart-page', CartPageComponent);
 Vue.component('logreg-page', LogRegPageComponent);
 Vue.component('admin-page', AdminPageComponent);
-Vue.component('search', SearchComponent);
 Vue.component('product-admin', ProductAdminComponent);
 Vue.component('order-admin', OrderAdminComponent);
 Vue.component('category-admin', CategoryAdminComponent);
@@ -37,10 +36,3 @@ let app = new Vue({
   el: "#app",
   router // add the router to the app
 });
-
-/*let app2 = new Vue({
-  el: '#app2',
-  data: {
-    message: 'Hello Vue!'
-  }
-})*/

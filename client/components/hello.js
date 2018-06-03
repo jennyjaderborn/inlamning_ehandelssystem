@@ -8,8 +8,8 @@ const HelloComponent = {
   `,
   data(){
     return{
-      title: "Summer Is Here",
-      description: "Own summer with iconic retro styles.",
+      title: "För dig som gillar träning",
+      description: "Alla möjliga tidningar om träning",
     }
   }
 
